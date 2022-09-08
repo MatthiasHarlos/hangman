@@ -1,6 +1,5 @@
 package de.newenergycoes.hangman.gui;
 
-import java.awt.Button;
 import java.awt.Color;
 import java.awt.Label;
 import java.awt.event.ActionEvent;
@@ -8,9 +7,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
-
 import javax.swing.ButtonGroup;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -19,15 +16,8 @@ import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JTextField;
 import javax.swing.SwingConstants;
-
-import org.eclipse.swt.graphics.Font;
-
 import de.newenergycoes.hangman.MainWindow;
 import de.newenergycoes.hangman.domainData.Player;
-
-import javax.swing.JTable;
-import javax.swing.JList;
-import javax.swing.JToggleButton;
 import javax.swing.JRadioButton;
 import java.awt.Choice;
 
@@ -52,6 +42,7 @@ public class Startpage {
 		label.setFont(new java.awt.Font("Dialog", java.awt.Font.BOLD, 21));
 		panel.add(label);
 		
+		// GameModes
 		JRadioButton allAgainstAll = new JRadioButton("Jeder gegen Jeden");
 		allAgainstAll.setBounds(455, 150, 156, 23);
 		panel.add(allAgainstAll);
@@ -90,6 +81,7 @@ public class Startpage {
 		panel.add(inputField);
 		inputField.setColumns(10);
 		
+		//Output for created Player
 		JLabel allPlayerLabel = new JLabel("");
 		allPlayerLabel.setVerticalAlignment(SwingConstants.TOP);
 		allPlayerLabel.setHorizontalAlignment(SwingConstants.CENTER);
@@ -133,8 +125,7 @@ public class Startpage {
 		panel.add(newUserButton);
 		JRootPane rootPane = mainWindow.getFrame().getRootPane();
 		rootPane.setDefaultButton(newUserButton);
-		
-		
+				
 		deleteButton = new JButton("Spieler löschen?");
 		deleteButton.setBackground(new Color(255, 204, 204));
 		deleteButton.setForeground(new Color(153, 51, 51));

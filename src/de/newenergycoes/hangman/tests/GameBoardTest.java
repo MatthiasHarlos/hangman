@@ -1,15 +1,10 @@
 package de.newenergycoes.hangman.tests;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.jupiter.api.Assertions.*;
-
 import java.util.List;
 import java.util.ArrayList;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import de.newenergycoes.hangman.MainWindow;
-import de.newenergycoes.hangman.domainData.Hangman;
 import de.newenergycoes.hangman.domainData.Player;
 import de.newenergycoes.hangman.domainData.Wording;
 import de.newenergycoes.hangman.gui.GameBoard;
@@ -76,7 +71,6 @@ class GameBoardTest {
 		// The WordGiver wins the round because errorCounter == initHangmanSize!
 		Wording wording = new Wording("hallo");
 		wording.setHiddenWord("hallo");
-		Hangman hangman = new Hangman();
 		int initHangmanSize = 0;
 		gameBoard.setErrorCounterForTest(initHangmanSize);
 		gameBoard.setWording(wording);
@@ -100,7 +94,6 @@ class GameBoardTest {
 		// All other player Wins the Game because they guessed the hiddenWord! Wording guesses Right tested!
 		Wording wording = new Wording("hallo");
 		wording.setHiddenWord("hallo");
-		Hangman hangman = new Hangman();
 		int initHangmanSize = 0;
 		gameBoard.setErrorCounterForTest(initHangmanSize);
 		gameBoard.setWording(wording);

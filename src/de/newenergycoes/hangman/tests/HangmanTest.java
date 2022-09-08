@@ -2,14 +2,12 @@ package de.newenergycoes.hangman.tests;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.awt.Choice;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import de.newenergycoes.hangman.MainWindow;
 import de.newenergycoes.hangman.domainData.Hangman;
 import de.newenergycoes.hangman.domainData.Player;
 import de.newenergycoes.hangman.gui.GameBoard;
-import de.newenergycoes.hangman.gui.Startpage;
 
 import org.junit.Assert;
 

@@ -1,28 +1,11 @@
 package de.newenergycoes.hangman.gui;
 
-import java.awt.Button;
 import java.awt.Color;
-import java.awt.EventQueue;
-import java.awt.Label;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.stream.Collectors;
-
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.JRadioButton;
-import javax.swing.JRootPane;
-import javax.swing.JTextField;
-import javax.swing.SwingConstants;
 import java.awt.Font;
-import javax.swing.border.TitledBorder;
 import javax.swing.border.LineBorder;
 
 public class Header {

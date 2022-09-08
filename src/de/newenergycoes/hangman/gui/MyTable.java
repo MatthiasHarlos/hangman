@@ -2,9 +2,6 @@ package de.newenergycoes.hangman.gui;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.EventQueue;
-
-import javax.swing.JFrame;
 import javax.swing.JTable;
 
 public class MyTable {
@@ -25,6 +22,7 @@ public class MyTable {
 		return this.table;
 	}
 	
+	//stretches Table in best way!
 	public void setAutoResizeTable() {
 		int widthForAllColumn = table.getWidth() / table.getColumnCount();
 		for (int column = 0; column < table.getColumnCount(); column++) {

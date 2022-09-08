@@ -72,5 +72,4 @@ public class MainWindow {
 		return this.header;
 	}
 	
-	// Paneltausch mit getter und setter / Switchpanel
 }
