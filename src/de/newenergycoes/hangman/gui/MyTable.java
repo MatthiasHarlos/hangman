@@ -4,6 +4,11 @@ import java.awt.Color;
 import java.awt.Dimension;
 import javax.swing.JTable;
 
+/** 
+ * Table for game results!
+ * How often have the player won or lost!
+ * @author matthias.harlos
+ */
 public class MyTable {
 
 	private JTable table;

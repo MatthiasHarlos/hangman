@@ -21,7 +21,11 @@ import de.newenergycoes.hangman.domainData.Player;
 import javax.swing.JRadioButton;
 import java.awt.Choice;
 
-
+/** 
+ * Startpage of hangman!
+ * Create player or delete them and start the game!
+ * @author matthias.harlos
+ */
 public class Startpage {
 
 	private JPanel panel = new JPanel();
@@ -32,6 +36,11 @@ public class Startpage {
 	private JButton startButton;
 	private JTextField inputField;
 
+	/** 
+	 * Constructor for Startpage to initialize this
+	 * @param mainWindow MainWindow
+	 * @param header Header
+	 */
 	public Startpage(MainWindow mainWindow, Header header) {
 		panel.setBounds(10, 10, 787, 516);
 		panel.setLayout(null);
@@ -142,10 +151,18 @@ public class Startpage {
 		panel.add(deleteButton);
 	}
 
+	/** 
+	 * returns the startpage as JPanel for the MainWindow frame
+	 * @return this Startpage's panel.
+	 */
 	public JPanel getPanel() {
 		return this.panel;
 	}
 	
+	/** 
+	 * returns the Button for Test-Classes
+	 * @param buttonType String // "anlegen" "löschen" else is startButton
+	 */
 	public JButton getButton(String buttonType) {
 		if (buttonType.equals("anlegen")) {
 			return this.newUserButton;
@@ -156,18 +173,30 @@ public class Startpage {
 		}
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public List<Player> getPlayersForTest() {
 		return this.players;
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public void setInputForNewUserName(String username) {
 		this.inputField.setText(username);
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public Choice getChoiceTesting() {
 		return choice;
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public void setCoiceTesting(Choice choice) {
 		this.choice = choice;
 	}

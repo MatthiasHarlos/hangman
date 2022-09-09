@@ -19,6 +19,10 @@ import de.newenergycoes.hangman.domainData.Wording;
 import javax.swing.JLabel;
 import javax.swing.ImageIcon;
 
+/** 
+ * GameBoard of hangman :-)
+ * @author matthias.harlos
+ */
 public class GameBoard {
 
 	private JPanel panel = new JPanel();
@@ -35,8 +39,29 @@ public class GameBoard {
 	private JButton startButton;
 	private Wording wording;
 	private TextField solutionField;
-
+	
+	/** 
+	 * Constructor creates the gameBoard and have the game logic
+	 * @param mainWindow MainWindow
+	 * @param players List<Player>
+	 * @param playerToChange Integer
+	 * @param isInitialGame boolean
+	 * @param allAgainstAll boolean // defines GameMode
+	 * @param header Header //Header is needed for exit button
+	 */
 	public GameBoard(MainWindow mainWindow, List<Player> players, int playerToChange, boolean isInitialGame, boolean allAgainstAll, Header header) {
+		//Exit the game and return to startPage! Add to Header
+				JButton btnEnde = new JButton("");
+				btnEnde.setIcon( new ImageIcon(GameBoard.class.getResource("/de/newenergycoes/hangman/img/exitDoor.png")));
+				btnEnde.setForeground(new Color(0, 0, 102));
+				btnEnde.setBackground(new Color(200, 20, 20));
+				btnEnde.setBounds(700, 5, 45, 40);
+				btnEnde.addActionListener(new ActionListener() {
+					public void actionPerformed(ActionEvent e) {
+						mainWindow.getStartpage(panel);
+					}
+				});
+				header.getPanel().add(btnEnde);
 		// initialize GameBoard
 		this.players = players;
 		this.playerToChange = playerToChange;
@@ -44,9 +69,15 @@ public class GameBoard {
 			this.players.stream().forEach(player -> players.stream().filter(playerTwo -> !playerTwo.equals(player))
 					.forEach(playerTwo -> player.getOtherPlayer().add(playerTwo)));
 		}
+		mainWindow.setActuallyPanelData(players, playerToChange, this.panel);
+		//We begin initial with player 0 but need to count high on start to give playerToChange to next Wording round!
 		if (players.size() - 1 == playerToChange) {
 			this.playerToChange = 0;
+		} else {
+			this.playerToChange++;
 		}
+		//Here we need the initial playerToChange and not this.playerToChange because this.playerToChange needs
+		// to count high for the next Wording round with new gameBoard and new playerToChange counted from last round!
 		wordGiver = players.get(playerToChange);
 		guessingPlayers = new ArrayList<Player>(players);
 		guessingPlayers.remove(wordGiver);
@@ -57,7 +88,6 @@ public class GameBoard {
 		mainLabel.setAlignment(Label.CENTER);
 		mainLabel.setBounds(268, 90, 250, 22);
 		panel.add(mainLabel);
-		this.playerToChange++;
 		int newPlayer = this.playerToChange;
 
 		solutionField = new TextField();
@@ -127,6 +157,7 @@ public class GameBoard {
 
 
 				//TODO: Info 1: need other solution to show the last feet of hangman!
+				// Here will start a new round with new word
 				if (errorCounter == initHangmanSize
 						|| wording.getHiddenWord() != null && !wording.getHiddenWord().contains("_")) {
 					try {
@@ -197,19 +228,6 @@ public class GameBoard {
 		startButton.setBounds(337, 180, 113, 23);
 		panel.add(startButton);
 
-		//Exit the game and return to startPage!
-		JButton btnEnde = new JButton("");
-		btnEnde.setIcon( new ImageIcon(GameBoard.class.getResource("/de/newenergycoes/hangman/img/exitDoor.png")));
-		btnEnde.setForeground(new Color(0, 0, 102));
-		btnEnde.setBackground(new Color(200, 20, 20));
-		btnEnde.setBounds(700, 5, 45, 40);
-		btnEnde.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				mainWindow.getStartpage(panel);
-			}
-		});
-		header.getPanel().add(btnEnde);
-		
 		JLabel lblNewLabel = new JLabel("Gewinnzähler:");
 		lblNewLabel.setBounds(348, 254, 95, 14);
 		panel.add(lblNewLabel);
@@ -219,10 +237,18 @@ public class GameBoard {
 		panel.add(lblNewLabel_1);
 	}
 
+	/** 
+	 * returns the gameBoard as JPanel for the MainWindow frame
+	 * @return this GameBoard's panel.
+	 */
 	public JPanel getPanel() {
 		return this.panel;
 	}
 	
+	/** 
+	 * Prints the hanging man on the gallows with gameBoards errorCounter Integer
+	 * @param hangman Hangman
+	 */
 	public void printHangman(Hangman hangman) {
 		errorCounter++;
 		gallows.setText("");
@@ -240,6 +266,10 @@ public class GameBoard {
 		guessingPlayerToChange++;
 	}
 	
+	/** 
+	 * This Button is only for the last hanging man error to startButton again
+	 * and get the feet of the hanging man! 
+	 */
 	public void clickButton() {
 		new Thread(new Runnable() {
 			public void run() {
@@ -248,31 +278,51 @@ public class GameBoard {
 		}).start();
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public List<Player> getTestingPlayer() {
 		return this.players;
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public void setErrorCounterForTest(int errorCounter) {
 		this.errorCounter = errorCounter;
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public JButton getStartButton() {
 		return this.startButton;
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public void setWording(Wording wording) {
 		this.wording = wording;
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public void setSolutionField(String input) {
 		this.solutionField.setText(input);
 	}
 	
-	
+	/** 
+	 * Testing Method 
+	 */
 	public JTextArea getHangmanLabelLeft() {
 		return this.gallows;
 	}
 	
+	/** 
+	 * Testing Method 
+	 */
 	public JTextArea getHangmanLabelRight() {
 		return this.hangingMan;
 	}

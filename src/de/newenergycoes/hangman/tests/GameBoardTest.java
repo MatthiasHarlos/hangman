@@ -10,7 +10,10 @@ import de.newenergycoes.hangman.domainData.Wording;
 import de.newenergycoes.hangman.gui.GameBoard;
 import org.junit.Assert;
 
-
+/** 
+ * GameBoardTest of hangman :-)
+ * @author matthias.harlos
+ */
 class GameBoardTest {
 
 	private static GameBoard gameBoard;
@@ -34,10 +37,12 @@ class GameBoardTest {
 		Assert.assertEquals(4, players.size());
 	}
 
+	/** 
+	 * PlayerOne wordGiver, otherPlayer are all same guessingpoints and are the
+	 * winner! AllAgainstAll
+	 */
 	@Test
-	void testWinnerOfAllAgainstAll1() {
-		// PlayerOne wordGiver, otherPlayer are all same guessingpoints and are the
-		// winner! AllAgainstAll
+	void testGetWinnerWithGuessingPoints() {
 		for (int y = 1; y < players.size(); y++) {
 			for (int i = 0; i < 2; i++) {
 				players.get(y).setGuessingPoints();
@@ -52,10 +57,12 @@ class GameBoardTest {
 		
 	}
 
+	/** 
+	 * PlayerOne wordGiver, secondPlayer Matthi has most points and is the winner! 
+	 * AllAgainstAll
+	 * */
 	@Test
-	void testWinnerOfAllAgainstAll2() {
-		// PlayerOne wordGiver, secondPlayer Matthi has most points and is the winner!
-		// AllAgainstAll
+	void testGetWinnerWithGuessingPointsTwo() {
 		for (int i = 0; i < 2; i++) {
 			players.get(1).setGuessingPoints();
 		}
@@ -65,10 +72,11 @@ class GameBoardTest {
 		Assert.assertEquals("Matthi", players.get(0).getWinnerWithGuessingPoints().get(0).getPlayerName());
 	}
 
-
+	/** 
+	 * The WordGiver wins the round because errorCounter == initHangmanSize! 
+	 */
 	@Test
 	void testWinnerOfOneAgainstAll() {
-		// The WordGiver wins the round because errorCounter == initHangmanSize!
 		Wording wording = new Wording("hallo");
 		wording.setHiddenWord("hallo");
 		int initHangmanSize = 0;
@@ -89,9 +97,11 @@ class GameBoardTest {
 		Assert.assertEquals(1, players.get(3).getLoosingScore());
 	}
 	
+	/** 
+	 *  All other player Wins the Game because they guessed the hiddenWord! Wording guesses Right tested!
+	 */
 	@Test
 	void testWinnerOfOneAgainstAllTwo() {
-		// All other player Wins the Game because they guessed the hiddenWord! Wording guesses Right tested!
 		Wording wording = new Wording("hallo");
 		wording.setHiddenWord("hallo");
 		int initHangmanSize = 0;
